@@ -13,8 +13,7 @@ html {
 body {
     display: flex;
     margin: 0;
-    height: 100%;
-    width: 100%;
+    background-color: #F2F2F2;
 }
 
 a, a:link, a:visited, a:active {
@@ -30,37 +29,52 @@ nav li {
 }
 
 .menu {
-    background-color: blue;
-    color: white;
+    background-color: #4738A6;
+    color: #F2F2F2;
     display: flex;
     flex-direction: column;
     flex: 0.5;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 16px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    padding: 0 2vw;
 }
 
 .menu a{
-    color: white;
+    color: #F2F2F2;
 }
 
 .menu ul {
     padding: 0;
 }
 
-.menu-cadastro div img{
+.menu-cadastro a img{
     width: 4vw;
     height: 4vw;
 }
 
 .menu-titulo {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 32px;
     margin-bottom: 0.2vw;
 }
 
 .menu-subtitulo {
     font-weight: bold;
     font-size: 18px;
+}
+
+.menu-pesquisa  #pesquisa{
+    border-radius: 5px;
+    border: 0;
+    padding: 18px 12px;
+    font-size: 18px;
+    height: 0.5vh;
+    width: 20vw;
 }
 
 .menu-cadastro {
@@ -72,13 +86,181 @@ nav li {
 }
 
 .menu-logo img {
-    width: 8vw;
-    height:8vw;
+    width: 16vw;
+    height: auto;
+    margin-bottom: 3vh;
+    background-color: #f2f2f2;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .conteudo {
     display: flex;
     flex-direction: column;
     flex: 3;
-    margin: 0 3vw;
+    margin: 0 10vw;
+    background-color: #F2F2F2;
+    color: #0D0D0D;
+}
+
+.conteudo p {
+    font-size: 20px;
+    text-align: left;
+}
+
+.conteudo ul {
+    margin: 0;
+}
+
+.conteudo ul li {
+    font-size: 20px;
+    text-align: left;
+}
+
+.cont-titulo {
+    margin-top: 6vh;
+    margin-bottom: 4vh;
+    font-size: 48px;
+}
+
+.cont-titulo h1 {
+    margin: 0;
+}
+
+.cont-subtitulo {
+    font-size: 32px;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+.cont-img {
+    width: 50vw;
+    height: auto;
+}
+
+.autor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #656565;
+}
+
+.autor a, .autor a:link, .autor a:visited, .autor a:active {
+    text-decoration: none;
+    color: #656565;
+}
+
+.nome-autor {
+    margin: auto 0;
+}
+.img-subtitulo {
+    margin: 0;
+    width: 32px;
+    height: auto;
+}
+
+.lista-participantes {
+    display: flex;
+    justify-content: center;
+}
+
+.lista-participantes ul {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    list-style-type: none;
+    padding: 0;
+}
+
+.lista-participantes ul li {
+    display: flex;
+    margin: 2vh 2vw;
+}
+
+.lista-participantes-texto {
+    margin: auto;
+}
+
+.lista-participantes-nome {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.lista-participantes-ocupacao {
+    font-size: 20px;
+    text-align: left;
+    color: #656565;
+}
+
+.lista-participantes-img {
+    width: 150px;
+    height: auto;
+}
+
+.lista-participantes-img-crop {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10%;
+    margin: 1vw 2vw;
+}
+
+.img-perfil {
+    width: 500px;
+    height: auto;
+}
+
+.img-perfil-crop {
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10%;
+    margin: 5vh auto;
+}
+
+.perfil-titulo {
+    margin-top: 6vh;
+    margin-bottom: 4vh;
+    font-size: 32px;
+}
+
+.perfil-titulo h1 {
+    margin: 0;
+}
+
+.lista-salvos {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.lista-salvos ul {
+    display: grid;
+    text-align: center;
+    justify-self: center;
+    grid-template-columns: repeat(2,1fr);
+    list-style-type: none;
+    padding: 0;
+}
+
+.lista-salvos ul li {
+    background-color: #B9B9B9;
+    border-radius: 30px;
+    margin: 0 2vw ;
+}
+
+.lista-salvos ul li ul {
+    grid-template-columns: repeat(1,1fr);
+    list-style-type: disc;
+    margin: 24px 0;
+}
+
+.lista-salvos ul li ul li {
+    margin: 10px 40px;
+}
+
+.lista-salvos h2 {
+    font-weight: 500;
+    margin-top: 0;
 }
