@@ -201,6 +201,7 @@ nav li {
 
 .lista-participantes-img-crop {
     width: 150px;
+    min-width: 150px;
     height: 150px;
     overflow: hidden;
     border-radius: 10%;
@@ -268,19 +269,24 @@ nav li {
 
 .QS-card {
     display: flex;
+    text-align: left;
 }
 
 .QS-card-img {
     width: 200px;
+    min-width: 200px;
     height: auto;
+    background-color: #F25764;
 }
 
 .QS-card-img-crop {
     width: 200px;
+    min-width: 200px;
     height: 200px;
     overflow: hidden;
     border-radius: 10%;
     margin: 6vh;
+    background-color: #F25764;
 }
 
 .QS-card-text {
