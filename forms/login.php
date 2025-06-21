@@ -37,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 setcookie("usuario", $usuario['nome'], time() + (86400 * 30), "/");
                 // retorna para a pagina inicial quando o login der certo
                 // eventualmente trocar para mandar para a pagina de perfil do usuario
-                header('Location: ../index.html');
+                header('Location: ../index.php');
                 exit;
             } else {
-                echo "Senha incorreta.1";
+                echo "Senha incorreta.";
             }
         } else {
             echo "Usuário não encontrado.";
