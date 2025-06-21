@@ -1,6 +1,26 @@
 <?php
     include('PDO_conexao/config_pdo.php');
     session_start();
+
+    try {
+        // consulta segura com PDO
+        $sql = "SELECT * FROM artigos WHERE id_artigo = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':id' => 1]);
+
+        $artigo = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $sql2 = "SELECT * FROM usuarios WHERE id_usuario = :id";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->execute([':id' => $artigo['usuario_id']]);
+
+        $autor = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+        // Log do erro para análise do desenvolvedor
+        error_log("Erro ao carregar artigo: " . $e->getMessage());
+        echo "Erro no sistema. Tente novamente mais tarde.";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -82,29 +102,20 @@
         <div class="conteudo">
 
             <div class="cont-titulo">
-                <h1>Mulheres em STEM</h1>
+                <h1>
+                    <?= htmlspecialchars($artigo['titulo']) ?>
+                </h1>
                 <a href="perfil-autor.html" class="autor">
                     <div>
                         <img class="img-subtitulo" src="img/account.svg" alt="">
                     </div>
-                    <p class="nome-autor">Paulo Martins Machado</p>
+                    <p class="nome-autor">
+                        <?= htmlspecialchars($autor['nome']) ?>
+                    </p>
                 </a>
             </div>
 
-            <p>
-                STEM é um acrônimo que representa as áreas de Ciência, Tecnologia, Engenharia e Matemática. Esse conceito abrange um conjunto de disciplinas interconectadas que desempenham um papel fundamental no desenvolvimento de soluções inovadoras para os desafios do mundo moderno.
-                O ensino e a aplicação dessas áreas visam preparar indivíduos para carreiras em setores que exigem pensamento crítico, habilidades analíticas e capacidade de resolução de problemas.
-                Além disso, o movimento STEM busca estimular a curiosidade, a criatividade e o espírito empreendedor, incentivando a formação de profissionais capazes de liderar em um cenário global cada vez mais tecnológico e dinâmico.
-            </p>
-            <p>
-                As mulheres têm conquistado cada vez mais espaço nas áreas de Ciência, Tecnologia, Engenharia e Matemática (STEM), setores historicamente dominados por homens. Embora as mulheres ainda representem uma porcentagem menor em muitas dessas áreas, o aumento da presença feminina tem sido significativo nas últimas décadas, graças a iniciativas que buscam promover a igualdade de gênero e encorajar meninas e mulheres a se interessarem por esses campos. Organizações e programas de mentoria têm desempenhado um papel crucial, ajudando a derrubar barreiras e incentivando o ingresso das mulheres no universo STEM, mostrando que elas são igualmente capazes de inovar e liderar.
-            </p>
-            <p>
-                Além disso, o reconhecimento das mulheres pioneiras em STEM tem sido fundamental para inspirar novas gerações. Figuras como Marie Curie, Ada Lovelace, Rosalind Franklin e Katherine Johnson abriram caminho para que muitas outras mulheres seguissem suas paixões e carreiras nesses campos. No entanto, a falta de visibilidade histórica de algumas dessas mulheres, especialmente em áreas como engenharia e computação, ainda é uma questão importante a ser abordada. A valorização dessas contribuições no presente ajuda a mudar o cenário e promove a ideia de que as mulheres têm um papel ativo e essencial na evolução científica e tecnológica.
-            </p>
-            <p>
-                Apesar dos avanços, ainda há muito a ser feito para garantir que as mulheres em STEM tenham o apoio e as oportunidades que merecem. A desigualdade salarial, a escassez de modelos femininos em posições de liderança e a falta de políticas públicas que incentivem a permanência das mulheres nessas áreas são desafios persistentes. Entretanto, a crescente mobilização de grupos feministas, a implementação de políticas inclusivas em empresas e instituições acadêmicas, além do aumento do número de mulheres em cargos de liderança e influência, são passos importantes para uma mudança significativa no panorama de gênero em STEM. O futuro de STEM é, sem dúvida, mais promissor e diversificado com a participação ativa das mulheres.
-            </p>        
+            <?= nl2br($artigo['conteudo']) ?>
         </div>
     </body>
 </html>
