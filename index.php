@@ -124,11 +124,13 @@
                         <a href="salvar-artigo.php" style="font-size: 16px; padding: 4px">
                             Salvar
                         </a>
-                        <?php if ($_SESSION['tipo'] == 'administrador'): ?>
-                            <?php $_SESSION['artigo_id'] = $artigo['id_artigo'] ?>
-                            <a href="deletar-artigo.php" style="font-size: 16px; padding: 4px">
-                                Deletar
-                            </a>
+                        <?php if(isset($_SESSION['tipo'])): ?>
+                            <?php if ($_SESSION['tipo'] == 'administrador'): ?>
+                                <?php $_SESSION['artigo_id'] = $artigo['id_artigo'] ?>
+                                <a href="deletar-artigo.php" style="font-size: 16px; padding: 4px">
+                                    Deletar
+                                </a>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
             </div>

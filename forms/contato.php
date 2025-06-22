@@ -87,6 +87,9 @@
 
             <div class="formulario-botoes">
                 <button type="button" onclick="javascript:window.location.href='../index.php';">Voltar</button>
+                <?php if ($_SESSION['tipo'] == 'administrador'): ?>
+                    <button type="button" onclick="location.href='lista-usuarios.php'">Ver<br>mensagens</button>
+                <?php endif; ?>
                 <button type="submit">Enviar</button>
             </div>
         </form>

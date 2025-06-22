@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['usuario_email'] = $usuario['email'];
 
                 // verifica se o usuario é administrador
-                if ($_SESSION['administrador']){
+                if ($usuario['administrador']){
                     $_SESSION['tipo'] = "administrador";
                 } else {
                     $_SESSION['tipo'] = "usuario";
