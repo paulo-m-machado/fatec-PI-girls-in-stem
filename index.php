@@ -4,10 +4,18 @@
 
     // puxar artigo do DB
     try {
-        // consulta segura com PDO
-        $sql = "SELECT * FROM artigos ORDER BY id_artigo DESC LIMIT 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        // verifica se tem algum artigo foi escolhido
+        if(isset($_REQUEST['artigo'])){
+            $sql = "SELECT * FROM artigos WHERE id_artigo = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([':id' => $_REQUEST['artigo']]);
+        } 
+        // se não escolhe o ultimo artigo postado
+        else {
+            $sql = "SELECT * FROM artigos ORDER BY id_artigo DESC LIMIT 1";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+        }
 
         $artigo = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -29,7 +37,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
-        <title>Girls in STEM</title>
+        <title>Girls in STEM</title> 
     </head>
     <body>
 
@@ -54,11 +62,9 @@
                 </div>
             <?php else: ?>
                 <div class="menu-cadastro">
-                    <!--esta div tera o icone do usuraio
                     <a href="perfil.php">
                         <img src="img/account.svg" alt="icone de usuario">
                     </a>
-                    -->
                     <div>
                         <a href="perfil.php" class="menu-titulo">
                             <b><?= htmlspecialchars($_SESSION['usuario_nome']) ?></b>
@@ -111,7 +117,7 @@
                 <h1>
                     <?= htmlspecialchars($artigo['titulo']) ?>
                 </h1>
-                <a href="perfil-autor.html" class="autor">
+                <a href="" class="autor">
                     <div>
                         <img class="img-subtitulo" src="img/account.svg" alt="">
                     </div>

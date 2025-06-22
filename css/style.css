@@ -235,13 +235,14 @@ nav li {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    align-items: center;
 }
 
 .lista-salvos ul {
     display: grid;
     text-align: center;
-    justify-self: center;
-    grid-template-columns: repeat(2,1fr);
+    /* mudar de volta para duas colunas quando o sistema de salvar artigos for implementado */
+    grid-template-columns: repeat(1,1fr);
     list-style-type: none;
     padding: 0;
 }
@@ -265,6 +266,12 @@ nav li {
 .lista-salvos h2 {
     font-weight: 500;
     margin-top: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.lista-salvos a {
+    color: #0D0D0D;
 }
 
 .QS-card {

@@ -109,12 +109,16 @@
                 <h1>
                     <?= htmlspecialchars($usuario['nome']) ?>
                 </h1>
+                <a href="forms/editar-perfil.php" style="font-size: 16px; color: #656565">
+                    Editar perfil
+                </a>
             </div>
         </div>
 
         <div>
             <div class="lista-salvos">
                 <ul>
+                    <!-- 
                     <li>
                         <ul>
                             <h2> Artigos Salvos</h2>
@@ -122,10 +126,31 @@
                             <li>A Importância da Diversidade de Gênero em Profissões de STEM: Desafios e Oportunidades</li>
                         </ul>
                     </li>
+                     -->
                     <li>
                         <ul>
                             <h2>Artigos escritos</h2>
-                            <li>Mulheres em STEM: Novos Dados Mostram Aumento na Representatividade e Desafios Persistentes</li>
+                            <?php
+                                try{
+                                    $sql = "SELECT * FROM artigos where usuario_id = :id";
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->execute([':id' => $_SESSION['usuario_id']]);
+
+                                    $listaArtigos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                    foreach($listaArtigos as $art){
+                                        echo"
+                                        <li>
+                                        <a href='index.php?artigo={$art['id_artigo']}'> {$art['titulo']} </a>
+                                        </li>
+                                        ";
+                                    }
+                                } catch(PDOException $e) {
+                                    // Log do erro para análise do desenvolvedor
+                                    error_log("Erro ao carregar artigos: " . $e->getMessage());
+                                    echo "Erro no sistema. Tente novamente mais tarde.";
+                                }
+                            ?>
                         </ul>
                     </li>
                 </ul>
