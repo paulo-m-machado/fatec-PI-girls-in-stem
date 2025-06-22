@@ -38,7 +38,7 @@
             <?php if (!isset($_SESSION['usuario_id'])): ?>
                 <div class="menu-cadastro">
                     <!--esta div tera o icone do usuraio-->
-                    <a href="perfil.html">
+                    <a href="">
                         <img src="img/account.svg" alt="icone de usuario">
                     </a>
                     <div>
@@ -54,12 +54,13 @@
                 </div>
             <?php else: ?>
                 <div class="menu-cadastro">
-                    <!--esta div tera o icone do usuraio-->
-                    <a href="perfil.html">
+                    <!--esta div tera o icone do usuraio
+                    <a href="perfil.php">
                         <img src="img/account.svg" alt="icone de usuario">
                     </a>
+                    -->
                     <div>
-                        <a href="perfil.html" class="menu-titulo">
+                        <a href="perfil.php" class="menu-titulo">
                             <b><?= htmlspecialchars($_SESSION['usuario_nome']) ?></b>
                         </a>
                     </div>
