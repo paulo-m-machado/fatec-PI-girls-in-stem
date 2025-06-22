@@ -74,11 +74,15 @@
             <?php endif; ?>
 
             <div>
-                <div class="menu-titulo">Noticias</div>
+                <div class="menu-titulo">
+                    <a href="lista-noticias.php">Noticias</a>
+                </div>
             </div>
 
             <div>
-                <div class="menu-titulo">Artigos</div>
+                <div class="menu-titulo">
+                    <a href="lista-artigos.php">Artigos</a>
+                </div>
             </div>
 
             <div>
