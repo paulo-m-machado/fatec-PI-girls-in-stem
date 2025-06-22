@@ -2,6 +2,7 @@
     include('PDO_conexao/config_pdo.php');
     session_start();
 
+    // puxar artigo do DB
     try {
         // consulta segura com PDO
         $sql = "SELECT * FROM artigos WHERE id_artigo = :id";
@@ -58,16 +59,12 @@
                         <img src="img/account.svg" alt="icone de usuario">
                     </a>
                     <div>
-                        <a href="perfil.html">
+                        <a href="perfil.html" class="menu-titulo">
                             <b><?= htmlspecialchars($_SESSION['usuario_nome']) ?></b>
                         </a>
                     </div>
                 </div>
             <?php endif; ?>
-
-            <div class="menu-pesquisa">
-                <input type="search" name="" id="pesquisa" aria-label="Pesquisar" placeholder="Pesquise">
-            </div>
 
             <div>
                 <div class="menu-titulo">Noticias</div>
@@ -86,7 +83,7 @@
             </div>
 
             <div>
-                <a href="forms/contato.html" class="menu-titulo">Contato</a>
+                <a href="forms/contato.php" class="menu-titulo">Contato</a>
             </div>
 
             <!--esta div recebera a logo do projeto-->
@@ -96,6 +93,14 @@
                 </div>
                 <div class="menu-titulo">Sobre</div>
             </a>
+            
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <div>
+                    <a href="logout.php" class="menu-titulo">
+                        Sair
+                    </a>
+                </div>
+            <?php endif; ?>
         </nav>
 
         <!--esta div recebera o conteudo-->
