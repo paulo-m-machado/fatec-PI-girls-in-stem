@@ -5,9 +5,9 @@
     // puxar artigo do DB
     try {
         // consulta segura com PDO
-        $sql = "SELECT * FROM artigos WHERE id_artigo = :id";
+        $sql = "SELECT * FROM artigos ORDER BY id_artigo DESC LIMIT 1";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([':id' => 1]);
+        $stmt->execute();
 
         $artigo = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -118,6 +118,18 @@
                         <?= htmlspecialchars($autor['nome']) ?>
                     </p>
                 </a>
+                <!-- botão para administradores deletarem o artigo -->
+                    <div class="autor">
+                        <a href="salvar-artigo.php" style="font-size: 16px; padding: 4px">
+                            Salvar
+                        </a>
+                        <?php if ($_SESSION['tipo'] == 'administrador'): ?>
+                            <?php $_SESSION['artigo_id'] = $artigo['id_artigo'] ?>
+                            <a href="deletar-artigo.php" style="font-size: 16px; padding: 4px">
+                                Deletar
+                            </a>
+                        <?php endif; ?>
+                    </div>
             </div>
 
             <?= nl2br($artigo['conteudo']) ?>
