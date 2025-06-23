@@ -105,15 +105,6 @@
         <div>
             <div class="lista-salvos">
                 <ul>
-                    <!-- 
-                    <li>
-                        <ul>
-                            <h2> Artigos Salvos</h2>
-                            <li>Inovações Tecnológicas: Como a Inteligência Artificial Está Transformando as Ciências e Engenharia</li>
-                            <li>A Importância da Diversidade de Gênero em Profissões de STEM: Desafios e Oportunidades</li>
-                        </ul>
-                    </li>
-                     -->
                     <li>
                         <ul>
                             <?php
@@ -127,7 +118,7 @@
                                     foreach($listaArtigos as $art){
                                         echo"
                                         <li>
-                                        <a href='index.php?artigo={$art['id_artigo']}'> {$art['titulo']} </a>
+                                            <a href='index.php?artigo={$art['id_artigo']}'> {$art['titulo']} </a>
                                         </li>
                                         ";
                                     }
