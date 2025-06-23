@@ -110,7 +110,10 @@
                     <?= htmlspecialchars($usuario['nome']) ?>
                 </h1>
                 <a href="forms/editar-perfil.php" style="font-size: 16px; color: #656565">
-                    Editar perfil
+                    Editar perfil /
+                </a>
+                <a href="lista-usuarios.php" style="font-size: 16px; color: #656565">
+                    Lista de usuarios
                 </a>
             </div>
         </div>
