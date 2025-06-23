@@ -1,21 +1,6 @@
 <?php
     include('PDO_conexao/config_pdo.php');
     session_start();
-
-    // puxar artigo do DB
-    try {
-        // consulta segura com PDO
-        $sql = "SELECT * FROM usuarios WHERE id_usuario = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([':id' => $_SESSION['usuario_id']]);
-
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    } catch(PDOException $e) {
-        // Log do erro para análise do desenvolvedor
-        error_log("Erro ao carregar perfil do usuario: " . $e->getMessage());
-        echo "Erro no sistema. Tente novamente mais tarde.";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Artigos</title>
+    <title>Quem somos</title>
 </head>
 <body>
 
@@ -73,11 +58,11 @@
         </div>
 
         <div>
-            <a href="quem-somos.html" class="menu-titulo">Quem somos</a>
+            <a href="quem-somos.php" class="menu-titulo">Quem somos</a>
         </div>
 
         <div>
-            <a href="participantes.html" class="menu-titulo">Participantes</a>
+            <a href="participantes.php" class="menu-titulo">Participantes</a>
         </div>
 
         <div>
@@ -85,14 +70,14 @@
         </div>
 
         <!--esta div recebera a logo do projeto-->
-        <a href="sobre.html" class="menu-logo">
+        <a href="sobre.php" class="menu-logo">
             <div>
                 <img src="img/logo_girlsInSTEM_out2024.png" alt="logo do projeto Girls in STEM">
             </div>
             <div class="menu-titulo">Sobre</div>
         </a>
         
-        <?php if (isset($_SESSION['usuario_id'])): ?>
+        <?php if(isset($_SESSION['usuario_id'])): ?>
             <div>
                 <a href="logout.php" class="menu-titulo">
                     Sair
@@ -100,43 +85,31 @@
             </div>
         <?php endif; ?>
     </nav>
-
+    
     <div class="conteudo">
         <div class="cont-titulo">
-            <h1>Lista de artigos</h1>
+            <h1>Quem somos</h1>
         </div>
-        <div>
-            <div class="lista-salvos">
-                <ul>
-                    <li>
-                        <ul>
-                            <?php
-                                try{
-                                    $sql = "SELECT * FROM artigos WHERE tipo = 'Artigo'";
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->execute();
 
-                                    $listaArtigos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        <div class="QS-card">
+            <div class="QS-card-img-crop">
+                <img src="img/devs/paulo.png" alt="" class="QS-card-img">
+            </div>
+            <div class="QS-card-text">
+                <div class="QS-card-text-nome">Paulo Martins Machado</div>
+                <div class="QS-card-text-ocupacao">Estudante FATEC - Jahu</div>
+            </div>
+        </div>
 
-                                    foreach($listaArtigos as $art){
-                                        echo"
-                                        <li>
-                                            <a href='index.php?artigo={$art['id_artigo']}'> {$art['titulo']} </a>
-                                        </li>
-                                        ";
-                                    }
-                                } catch(PDOException $e) {
-                                    // Log do erro para análise do desenvolvedor
-                                    error_log("Erro ao carregar artigos: " . $e->getMessage());
-                                    echo "Erro no sistema. Tente novamente mais tarde.";
-                                }
-                            ?>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="QS-card">
+            <div class="QS-card-img-crop">
+                <img src="img/devs/yasmin.jpeg" alt="" class="QS-card-img">
+            </div>
+            <div class="QS-card-text">
+                <div class="QS-card-text-nome">Yasmin Sanchez Ouvinhas</div>
+                <div class="QS-card-text-ocupacao">Estudante FATEC - Jahu</div>
             </div>
         </div>
     </div>
-
 </body>
 </html>

@@ -86,11 +86,11 @@
             </div>
 
             <div>
-                <a href="quem-somos.html" class="menu-titulo">Quem somos</a>
+                <a href="quem-somos.php" class="menu-titulo">Quem somos</a>
             </div>
 
             <div>
-                <a href="participantes.html" class="menu-titulo">Participantes</a>
+                <a href="participantes.php" class="menu-titulo">Participantes</a>
             </div>
 
             <div>
@@ -98,7 +98,7 @@
             </div>
 
             <!--esta div recebera a logo do projeto-->
-            <a href="sobre.html" class="menu-logo">
+            <a href="sobre.php" class="menu-logo">
                 <div>
                     <img src="img/logo_girlsInSTEM_out2024.png" alt="logo do projeto Girls in STEM">
                 </div>
@@ -131,9 +131,11 @@
                 </a>
                 <!-- botão para administradores deletarem o artigo -->
                     <div class="autor">
+                        <!--
                         <a href="salvar-artigo.php" style="font-size: 16px; padding: 4px">
                             Salvar
                         </a>
+                         -->
                         <?php if(isset($_SESSION['tipo'])): ?>
                             <?php if ($_SESSION['tipo'] == 'administrador'): ?>
                                 <?php $_SESSION['artigo_id'] = $artigo['id_artigo'] ?>

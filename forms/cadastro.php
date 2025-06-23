@@ -39,25 +39,15 @@
                     $_SESSION['msg'] = "Email já cadastrado.";
                     $_SESSION['msg_type'] = 'error';
                 } else {
-                    /*
-                    if ($codigo == "12345"){
-                        $codigo = true;
-                    } else {
-                        $codigo = false;
-                    }
-                    */
-                    // se o codigo estiver certo o valor retorna TRUE
-                    $codigo = ($codigo == "12345");
 
-                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha, administrador) 
-                            VALUES (:nome, :email, :telefone, :senha, :administrador)";
+                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha) 
+                            VALUES (:nome, :email, :telefone, :senha)";
                     $stmt = $conn->prepare($sql);
                     $executou = $stmt->execute([
                         ':nome' => $nome,
                         ':email' => $email,
                         ':telefone' => $telefone,
-                        ':senha' => $senha,
-                        ':administrador' => $codigo
+                        ':senha' => $senha
                     ]);
                     if ($executou) {
                         $_SESSION['msg'] = "Registro criado com sucesso! Você já pode fazer login";
@@ -125,10 +115,6 @@
             <div class="formulario-conjunto">
                 <label for="confirma-senha" class="">Confirmar senha:</label>
                 <input type="password" name="confirma-senha" id="confirma-senha" required>
-            </div>
-            <div class="formulario-conjunto">
-                <label for="codigo">Codigo(se o usuario for administrador):</label>
-                <input type="password" name="codigo" id="codigo">
             </div>
 
             <div class="formulario-botoes">
