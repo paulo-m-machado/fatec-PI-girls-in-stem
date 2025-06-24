@@ -39,7 +39,7 @@
                     $_SESSION['msg_type'] = 'error';
                 } else {
 
-                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha, administrador) 
+                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha) 
                             VALUES (:nome, :email, :telefone, :senha)";
                     $stmt = $conn->prepare($sql);
                     $executou = $stmt->execute([
