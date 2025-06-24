@@ -73,11 +73,11 @@
         </div>
 
         <div>
-            <a href="quem-somos.html" class="menu-titulo">Quem somos</a>
+            <a href="quem-somos.php" class="menu-titulo">Quem somos</a>
         </div>
 
         <div>
-            <a href="participantes.html" class="menu-titulo">Participantes</a>
+            <a href="participantes.php" class="menu-titulo">Participantes</a>
         </div>
 
         <div>
@@ -85,7 +85,7 @@
         </div>
 
         <!--esta div recebera a logo do projeto-->
-        <a href="sobre.html" class="menu-logo">
+        <a href="sobre.php" class="menu-logo">
             <div>
                 <img src="img/logo_girlsInSTEM_out2024.png" alt="logo do projeto Girls in STEM">
             </div>
@@ -100,6 +100,7 @@
             </div>
         <?php endif; ?>
     </nav>
+
 
     <div class="conteudo">
         <div class="cont-titulo">
@@ -121,9 +122,9 @@
                                     foreach($listaUsuarios as $usr){
                                         echo"
                                         <li>
-                                        <div>
+                                        <div class='lista-usuarios'>
                                             <p>{$usr['nome']}</p>
-                                            <button class='formulario-botoes' onclick=location.href='forms/transformar-em-admin.php?usr={$usr['id_usuario']}'>
+                                            <button class='lista-botao' onclick=location.href='forms/transformar-em-admin.php?usr={$usr['id_usuario']}'>
                                                 Tornar em<br>administrador
                                             </button>
                                         </div>

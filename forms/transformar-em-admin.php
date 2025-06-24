@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="formulario-conjunto">
                 <label for="admin" class="" style="text-align: center"><?= htmlspecialchars($aviso) ?></label>
             </div>
+            
             <div class="formulario-botoes">
                 <button type="button" onclick="javascript:window.location.href='../lista-usuarios.php';">Não</button>
                 <button type="submit" id="tornar-adm" name="tornar-adm">Sim</button>

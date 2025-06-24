@@ -8,7 +8,6 @@
         $telefone = preg_replace('/\D/', '', $_POST['telefone']);
         $senha = $_POST['senha'];
         $confirmaSenha = $_POST['confirma-senha'];
-        $codigo = $_POST['codigo'];
 
         $_SESSION['old'] = [
             'nome' => $nome,
@@ -40,7 +39,7 @@
                     $_SESSION['msg_type'] = 'error';
                 } else {
 
-                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha) 
+                    $sql = "INSERT INTO usuarios (nome, email, telefone, senha, administrador) 
                             VALUES (:nome, :email, :telefone, :senha)";
                     $stmt = $conn->prepare($sql);
                     $executou = $stmt->execute([
@@ -87,14 +86,17 @@
 <body>
     <div class="formulario">
 
-        <?php if ($msg): ?>
-        <div class="msg <?= htmlspecialchars($msg_type) ?>">
-            <?= htmlspecialchars($msg) ?>
-        </div>
-        <?php endif; ?>
 
         <form class="formulario-bloco" method="post">
             <div class="formulario-titulo">Cadastre-se</div>
+
+            <div class="formulario-conjunto">
+                <?php if ($msg): ?>
+                    <label style="text-align: center">
+                        <?= htmlspecialchars($msg) ?>
+                    </label>
+                <?php endif; ?>
+            </div>
 
             <div class="formulario-conjunto">
                 <label for="nome" class="">Nome:</label>
@@ -118,7 +120,7 @@
             </div>
 
             <div class="formulario-botoes">
-                <button type="button" onclick="javascript:window.history.back();">Voltar</button>
+                <button type="button" onclick="javascript:window.location.href='../index.php';">Voltar</button>
                 <button type="submit" name="cadastrar" id="cadastrar">Cadastrar</button>
             </div>
         </form>

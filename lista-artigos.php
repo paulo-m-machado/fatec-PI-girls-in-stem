@@ -28,7 +28,7 @@
 </head>
 <body>
 
-    <nav class="menu">
+   <nav class="menu">
         <!--Aqui estao as partes relacionadas aos logins-->
         <?php if (!isset($_SESSION['usuario_id'])): ?>
             <div class="menu-cadastro">
@@ -73,11 +73,11 @@
         </div>
 
         <div>
-            <a href="quem-somos.html" class="menu-titulo">Quem somos</a>
+            <a href="quem-somos.php" class="menu-titulo">Quem somos</a>
         </div>
 
         <div>
-            <a href="participantes.html" class="menu-titulo">Participantes</a>
+            <a href="participantes.php" class="menu-titulo">Participantes</a>
         </div>
 
         <div>
@@ -85,7 +85,7 @@
         </div>
 
         <!--esta div recebera a logo do projeto-->
-        <a href="sobre.html" class="menu-logo">
+        <a href="sobre.php" class="menu-logo">
             <div>
                 <img src="img/logo_girlsInSTEM_out2024.png" alt="logo do projeto Girls in STEM">
             </div>

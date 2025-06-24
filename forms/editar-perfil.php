@@ -72,7 +72,7 @@
             </div>
 
             <div class="formulario-botoes">
-                <button type="button" onclick="javascript:window.history.back();">Voltar</button>
+                <button type="button" onclick="javascript:window.location.href='../perfil.php';">Voltar</button>
                 <button type="submit" name="cadastrar" id="cadastrar">Editar</button>
             </div>
         </form>

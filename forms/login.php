@@ -2,15 +2,11 @@
 session_start();
 include('../PDO_conexao/config_pdo.php'); // faz a conexao por PDO
 
+$aviso = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
-
-    // Validar email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Email inválido.";
-        exit;
-    }
 
     try {
         // Preparar consulta segura com PDO
@@ -40,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../index.php');
                 exit;
             } else {
-                echo "Senha incorreta.";
+                $aviso = "Senha incorreta.";
             }
         } else {
-            echo "Usuário não encontrado.";
+            $aviso = "Usuário não encontrado.";
         }
     } catch (PDOException $e) {
         // Log do erro para análise do desenvolvedor
@@ -67,6 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="formulario-titulo">Entre</div>
 
             <div class="formulario-conjunto">
+                <label for="" class="" style="text-align: center"><?= htmlspecialchars($aviso) ?></label>
+            </div>
+
+            <div class="formulario-conjunto">
                 <label for="email" class="">Email:</label>
                 <input type="email" name="email" id="email" required autofocus>
             </div>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="formulario-botoes">
-                <button type="button" onclick="javascript:window.history.back();">Voltar</button>
+                <button type="button" onclick="javascript:window.location.href='../index.php';">Voltar</button>
                 <button type="submit" id="login" name="login">Entrar</button>
             </div>
         </form>
