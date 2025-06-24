@@ -103,7 +103,7 @@
 
     <div class="conteudo">
         <div class="cont-titulo">
-            <h1>Lista de artigos</h1>
+            <h1>Lista de notícias</h1>
         </div>
         <div>
             <div class="lista-salvos">
